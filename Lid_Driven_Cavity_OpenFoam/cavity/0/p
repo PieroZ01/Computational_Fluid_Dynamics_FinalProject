@@ -1,0 +1,42 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2112                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      p;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -2 0 0 0 0];
+
+// Initial conditions
+
+internalField   uniform 0; // P=0 over all the domain at t=0
+
+boundaryField
+{
+topBoundary // Names have to be the same of blockmeshdict file
+    {
+        type            zeroGradient;
+    }
+
+    fixedWalls // Consistent names here as well
+    {
+        type            zeroGradient;
+    }
+
+    frontAndBack // And here as well
+    {
+        type            empty;
+    }
+}
+
+
+// ************************************************************************* //

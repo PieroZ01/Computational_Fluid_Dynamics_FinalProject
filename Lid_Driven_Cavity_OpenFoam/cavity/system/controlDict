@@ -1,0 +1,70 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2112                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     icoFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         6;
+
+deltaT          0.001;
+
+writeControl    timeStep;
+
+writeInterval   20; // Write results every 20 timesteps to save memory
+
+purgeWrite      5; // Keep only the last 2 time directories
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+functions
+{
+    probes_object
+    {
+        type            probes; 
+        functionObjectLibs ("libsampling.so");
+        enabled         true;
+        outputControl   timeStep;
+        outputInterval  1;
+        probeLocations 
+        (                     
+            (0.5  0.5 0.05 )  
+        );
+        fields
+        (
+            U
+	    p
+        );
+    }
+
+}
+
+
+// ************************************************************************* //
