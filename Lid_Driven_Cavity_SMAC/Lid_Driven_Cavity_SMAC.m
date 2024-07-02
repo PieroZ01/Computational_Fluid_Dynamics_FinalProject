@@ -20,7 +20,7 @@ Re = 100;
 dx = L / (Nx - 1);
 dy = L / (Ny - 1);
 % Number of time steps
-Nt = 40000;
+Nt = 60000;
 
 % Create the space grid
 x = linspace(0, L, Nx);
